@@ -43,7 +43,10 @@ fn looper(stream: &mut TcpStream) -> Result<(), Error> {
 }
 
 fn main() {
-    let mut stream = match TcpStream::connect("127.0.0.1:8080") {
+    let ip_addr = std::env::var("RPI")
+        .expect("Please set an env variable with your RPI's IP address and port");
+
+    let mut stream = match TcpStream::connect(ip_addr) {
         Ok(stream) => {
             println!("Connected to TcpStream Successfully");
             stream

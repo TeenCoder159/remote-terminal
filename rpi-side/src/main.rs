@@ -5,8 +5,9 @@ use std::str;
 use std::{io::prelude::*, process::Command};
 
 fn main() {
-    let listener =
-        TcpListener::bind("127.0.0.1:8080").expect("Error while binding to 127.0.0.1:8080");
+    let ip_addr = std::env::var("RPI")
+        .expect("Please set an env variable with your RPI's IP address and port");
+    let listener = TcpListener::bind(ip_addr).expect("Error while binding to 192.168.18.1:8080");
 
     for stream_err in listener.incoming() {
         let mut stream = stream_err.expect("Error with stream connection");
