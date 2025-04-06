@@ -62,7 +62,13 @@ The repository is organized into two main directories:
    cargo run
    ```
 
-4. Follow the prompts to enter the IP address and port of your Raspberry Pi.
+4. Set the environment variables:
+
+```zsh
+export RPI="192.168.18.RPI:Port" # on both devices
+```
+
+
 
 ## Usage
 
