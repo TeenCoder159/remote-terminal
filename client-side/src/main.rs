@@ -3,7 +3,7 @@ use std::io::{self, Read, Write};
 use std::net::TcpStream;
 use std::str;
 
-pub fn read_line() -> String {
+fn read_line() -> String {
     let mut user_input = String::new();
     io::stdin()
         .read_line(&mut user_input)
@@ -30,7 +30,7 @@ fn looper(stream: &mut TcpStream) -> Result<(), Error> {
             str::from_utf8(buffer).expect("Error converting to string")
         );
 
-        print!("Enter your command: ");
+        println!("Enter your command: ");
         let command_to_run = read_line();
 
         if command_to_run == "/quit".to_string() {
