@@ -74,6 +74,8 @@ fn string_to_command(buffer: &[u8]) -> Output {
                     .expect("Error carrying out echo command");
             }
         };
+    } else if command == "/quit" {
+        std::process::exit(1);
     } else {
         output = Command::new("echo")
             .arg(format!("\"Set current_dir to {}\"", args[0]))

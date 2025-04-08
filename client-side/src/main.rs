@@ -33,7 +33,12 @@ fn looper(stream: &mut TcpStream) -> Result<(), Error> {
         println!("Enter your command: ");
         let command_to_run = read_line();
 
-        if command_to_run == "/quit".to_string() {
+        if command_to_run == "/quit" {
+            stream
+                .write_all(b"/quit")
+                .expect("Error writing /quit to stream");
+            break;
+        } else if command_to_run == "quit" {
             break;
         }
 
